@@ -1,0 +1,115 @@
+{
+  "samples": 54,
+  "viewers": 6,
+  "class_distribution": {
+    "disliked": 11,
+    "liked": 43
+  },
+  "validation": "Для проверки сеть каждый раз обучалась без оценок одного зрителя, а затем предсказывала оценки этого зрителя.",
+  "model": {
+    "accuracy": 0.37037037037037035,
+    "balanced_accuracy": 0.23255813953488372,
+    "precision_liked": 0.6451612903225806,
+    "recall_liked": 0.46511627906976744,
+    "f1_liked": 0.5405405405405406,
+    "confusion_matrix": [
+      [
+        0,
+        11
+      ],
+      [
+        23,
+        20
+      ]
+    ]
+  },
+  "neural_network": {
+    "accuracy": 0.7037037037037037,
+    "balanced_accuracy": 0.4418604651162791,
+    "precision_liked": 0.7755102040816326,
+    "recall_liked": 0.8837209302325582,
+    "f1_liked": 0.8260869565217391,
+    "confusion_matrix": [
+      [
+        0,
+        11
+      ],
+      [
+        5,
+        38
+      ]
+    ]
+  },
+  "baseline": {
+    "accuracy": 0.7962962962962963,
+    "balanced_accuracy": 0.5,
+    "precision_liked": 0.7962962962962963,
+    "recall_liked": 1.0,
+    "f1_liked": 0.8865979381443299,
+    "confusion_matrix": [
+      [
+        0,
+        11
+      ],
+      [
+        0,
+        43
+      ]
+    ]
+  },
+  "neural_recognition_examples": [
+    {
+      "user_id": "viewer_01",
+      "movie_id": "13",
+      "rating": 3.0,
+      "actual_liked": 0,
+      "predicted_liked": 1,
+      "probability_liked": 0.9830435567148119
+    },
+    {
+      "user_id": "viewer_02",
+      "movie_id": "6",
+      "rating": 3.0,
+      "actual_liked": 0,
+      "predicted_liked": 1,
+      "probability_liked": 0.9928263065778592
+    },
+    {
+      "user_id": "viewer_01",
+      "movie_id": "4",
+      "rating": 4.0,
+      "actual_liked": 1,
+      "predicted_liked": 0,
+      "probability_liked": 0.05868325832085761
+    },
+    {
+      "user_id": "viewer_01",
+      "movie_id": "6",
+      "rating": 4.0,
+      "actual_liked": 1,
+      "predicted_liked": 0,
+      "probability_liked": 0.4402897236735873
+    },
+    {
+      "user_id": "viewer_01",
+      "movie_id": "1",
+      "rating": 5.0,
+      "actual_liked": 1,
+      "predicted_liked": 1,
+      "probability_liked": 0.9192504291616087
+    },
+    {
+      "user_id": "viewer_01",
+      "movie_id": "2",
+      "rating": 5.0,
+      "actual_liked": 1,
+      "predicted_liked": 1,
+      "probability_liked": 0.5119072522524307
+    }
+  ],
+  "artifacts": {
+    "dataset": "data/rating_classification.csv",
+    "model": "data/cache/rating_preference_classifier.joblib",
+    "neural_network": "data/cache/rating_preference_neural_network.joblib"
+  }
+}

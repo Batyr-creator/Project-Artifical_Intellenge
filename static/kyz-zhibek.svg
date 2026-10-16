@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 900" fill="none">
+  <defs>
+    <linearGradient id="sky" x1="300" y1="0" x2="300" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#173D50"/>
+      <stop offset=".47" stop-color="#C36E4A"/>
+      <stop offset=".72" stop-color="#F0B66F"/>
+      <stop offset="1" stop-color="#744B3C"/>
+    </linearGradient>
+    <linearGradient id="sun" x1="300" y1="210" x2="300" y2="540" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFE6AA" stop-opacity=".95"/>
+      <stop offset="1" stop-color="#F5C47B" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="steppe" x1="300" y1="500" x2="300" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#536653"/>
+      <stop offset="1" stop-color="#1A373B"/>
+    </linearGradient>
+    <pattern id="ornament" width="42" height="42" patternUnits="userSpaceOnUse">
+      <path d="M21 3 39 21 21 39 3 21 21 3Z" stroke="#EBC98E" stroke-opacity=".68" stroke-width="2"/>
+      <path d="M21 12 30 21 21 30 12 21 21 12Z" stroke="#EBC98E" stroke-opacity=".42" stroke-width="1.5"/>
+    </pattern>
+  </defs>
+  <rect width="600" height="900" fill="url(#sky)"/>
+  <circle cx="300" cy="354" r="175" fill="url(#sun)"/>
+  <circle cx="300" cy="340" r="76" fill="#FFE6B4" fill-opacity=".86"/>
+  <path d="M0 500c85-57 159-52 235-22 75 30 150 28 220-10 53-29 104-37 145-24v456H0V500Z" fill="#735846" fill-opacity=".7"/>
+  <path d="M0 565c107-64 202-37 275-7 86 36 190 32 325-31v373H0V565Z" fill="url(#steppe)"/>
+  <path d="M0 705c112-43 224-40 327-7 93 30 178 23 273-13v215H0V705Z" fill="#1B3738"/>
+  <path d="M300 415v328" stroke="#F4D69A" stroke-opacity=".23" stroke-width="2"/>
+  <path d="M274 487c-25 25-37 63-36 109l-24 82 13 7 40-68 13-72 13 72 40 68 13-7-25-82c2-46-10-84-35-109l-6-33-6 33Z" fill="#1C3035"/>
+  <path d="M275 469c-11-22-9-46 4-71 14 21 18 42 12 62l-16 9Z" fill="#1C3035"/>
+  <path d="M275 484c-11-19-27-26-47-24 8 14 22 23 42 26m20-2c12-19 28-26 48-24-8 14-22 23-42 26" stroke="#1C3035" stroke-width="9" stroke-linecap="round"/>
+  <path d="M371 530c-21 16-31 42-30 76l-19 53 11 6 31-46 10-44 10 44 31 46 11-6-19-53c1-34-9-60-30-76l-5-25-5 25Z" fill="#273C3C"/>
+  <path d="M372 516c-9-17-7-35 3-54 11 16 14 31 9 47l-12 7Z" fill="#273C3C"/>
+  <path d="M372 528c-9-14-21-20-36-18 6 11 17 17 32 20m15-2c9-14 21-20 36-18-6 11-17 17-32 20" stroke="#273C3C" stroke-width="7" stroke-linecap="round"/>
+  <path d="M73 554c17-22 37-31 62-27l29 17 23-3 18 16-2 10-29-4-22 8-29-8-27 14-24-4 8-19-7 0Zm45-28-15-20 20 4 12 13m28 1 13-22 5 21" fill="#253A38"/>
+  <path d="M98 575v43m39-38-4 45m36-54 7 44m-71-46-9-7" stroke="#253A38" stroke-width="8" stroke-linecap="round"/>
+  <path d="M86 551c-20-9-29-25-28-46 14 12 21 25 21 40" fill="#253A38"/>
+  <rect x="16" y="16" width="568" height="868" rx="6" stroke="#F4D69A" stroke-opacity=".76" stroke-width="2"/>
+  <rect x="28" y="28" width="544" height="844" rx="3" stroke="url(#ornament)" stroke-width="34"/>
+  <path d="M95 770h410" stroke="#F4D69A" stroke-opacity=".58"/>
+  <text x="300" y="800" fill="#FFF2D8" font-family="Georgia,serif" font-size="44" letter-spacing="7" text-anchor="middle">ҚЫЗ ЖІБЕК</text>
+  <text x="300" y="834" fill="#F3D9AE" font-family="Arial,sans-serif" font-size="13" letter-spacing="5" text-anchor="middle">A STEPPE LOVE STORY</text>
+</svg>

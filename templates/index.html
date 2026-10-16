@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f4ecdf">
+    <title>Cinema — журнал о кино и рекомендациях</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="Cinema, на главную">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 40 40" focusable="false">
+            <rect width="40" height="40" rx="11" fill="#d8e0ca"/>
+            <path d="M10 12.5 28 8l2 7.5-18 4.5z" fill="#173d36"/>
+            <path d="m15 11.3 3.6 6.5m4.4-8.5 3.6 6.5" stroke="#d8e0ca" stroke-linecap="round" stroke-width="2"/>
+            <rect x="10" y="19" width="20" height="14" rx="2" fill="#173d36"/>
+            <path d="m18 22.5 7 3.5-7 3.5z" fill="#e9a080"/>
+          </svg>
+        </span>
+        <span>Cinema<span class="brand-period">.</span></span>
+      </a>
+      <nav class="main-nav" aria-label="Основная навигация">
+        <a href="#catalog">Популярные фильмы</a>
+        <a href="#recommendations">Подбор по вкусу</a>
+        <a href="#assistant">ИИ-помощник</a>
+        <a href="#knowledge">О проекте</a>
+      </nav>
+      <div class="catalog-note"><span class="status-dot"></span><span id="catalog-count">Подбор по вашему вкусу</span></div>
+    </header>
+
+    <main class="page-shell">
+      <section class="intro" aria-labelledby="page-title">
+        <div class="intro-copy-block intro-panel">
+          <p class="eyebrow">Независимый журнал о кино · выпуск 01</p>
+          <h1 id="page-title">Кино — это<br><em>чужая жизнь.</em></h1>
+          <p class="intro-copy">Выберите фильм, профиль зрителя или жанр — сервис подберёт истории на основе каталога и оценок.</p>
+          <a class="intro-cta" href="#recommendations">Выбрать способ подбора <span aria-hidden="true">↘</span></a>
+          <div class="intro-tags" aria-label="Особенности сервиса">
+            <span>50 историй в первом выпуске</span>
+            <span>Подбор по вашему вкусу</span>
+          </div>
+        </div>
+        <div class="cinema-art">
+          <img src="https://image.tmdb.org/t/p/w780/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg" alt="Постер фильма «Интерстеллар»">
+          <div class="feature-caption">
+            <span class="feature-kicker">На обложке · фильм № 01</span>
+            <strong>Интерстеллар</strong>
+            <span>2014 <i aria-hidden="true">·</i> Фантастика, драма</span>
+          </div>
+          <span class="feature-mark" aria-hidden="true">C.</span>
+        </div>
+      </section>
+
+      <section class="discovery" id="recommendations" aria-label="Настройки рекомендаций">
+        <div class="discovery-heading">
+          <div>
+            <p class="eyebrow">Умный выбор</p>
+            <h2>Что будет на вашем экране?</h2>
+          </div>
+          <span class="discovery-note">Настройте подбор под себя</span>
+        </div>
+        <div class="mode-switch" role="tablist" aria-label="Способ рекомендаций">
+          <button class="mode-tab is-active" id="content-tab" type="button" role="tab" aria-selected="true" aria-controls="recommendation-form" data-mode="content">Похожее на фильм</button>
+          <button class="mode-tab" id="collaborative-tab" type="button" role="tab" aria-selected="false" aria-controls="recommendation-form" data-mode="collaborative">По оценкам зрителей</button>
+          <button class="mode-tab" id="logic-tab" type="button" role="tab" aria-selected="false" aria-controls="recommendation-form" data-mode="logic">Умный подбор</button>
+          <button class="mode-tab" id="genre-tab" type="button" role="tab" aria-selected="false" aria-controls="recommendation-form" data-mode="genre">По жанру</button>
+        </div>
+        <p class="mode-description" id="mode-description" aria-live="polite">Найдём фильмы с похожими жанрами, сюжетом, актёрами и режиссёром.</p>
+        <form id="recommendation-form" class="recommendation-form">
+          <label class="field" id="movie-field">
+            <span class="field-label">Мне понравился фильм</span>
+            <select id="movie-select" name="movie_id" required>
+              <option value="">Загружаем каталог...</option>
+            </select>
+          </label>
+          <label class="field is-hidden" id="profile-field">
+            <span class="field-label">Подобрать для зрителя</span>
+            <select id="profile-select" name="user_id" disabled>
+              <option value="">Загружаем профили...</option>
+            </select>
+          </label>
+          <label class="field is-hidden" id="genre-field">
+            <span class="field-label">Хочу посмотреть</span>
+            <select id="genre-select" name="genre" disabled>
+              <option value="">Загружаем жанры...</option>
+            </select>
+          </label>
+          <button class="submit-button" type="submit">Подобрать фильмы <span aria-hidden="true">↗</span></button>
+        </form>
+      </section>
+
+      <section class="assistant-section" id="assistant" aria-labelledby="assistant-title">
+        <div class="assistant-heading">
+          <div>
+            <p class="eyebrow">Спросите о кино или попросите помочь</p>
+            <h2 id="assistant-title">ИИ-помощник</h2>
+          </div>
+          <span class="assistant-status" id="assistant-status" role="status">Проверяем подключение...</span>
+        </div>
+        <form id="assistant-form" class="assistant-form">
+          <label class="assistant-prompt" for="assistant-question">
+            <span class="field-label">Ваш запрос</span>
+            <textarea id="assistant-question" name="question" rows="3" maxlength="2000" required placeholder="Например: посоветуй добрый научно-фантастический фильм из каталога и объясни выбор"></textarea>
+          </label>
+          <button class="submit-button assistant-submit" id="assistant-submit" type="submit">Спросить ИИ <span aria-hidden="true">↗</span></button>
+        </form>
+        <p class="assistant-note">Ответ формирует OpenAI. Для вопросов о фильмах помощник также использует каталог этого проекта.</p>
+        <div class="assistant-answer" id="assistant-answer" aria-live="polite" hidden></div>
+      </section>
+
+      <section class="results-section" id="catalog" aria-labelledby="results-title" aria-live="polite">
+        <div class="results-heading">
+          <div>
+            <h2 id="results-title">Популярные фильмы</h2>
+          </div>
+          <p class="results-context" id="results-context">Загружаем популярные фильмы...</p>
+        </div>
+        <div class="results-grid" id="results-grid">
+          <div class="empty-state" id="empty-state">Загружаем популярные фильмы...</div>
+        </div>
+      </section>
+
+      <details class="classifier-report" id="classifier-results">
+        <summary class="classifier-report-summary">
+          <span class="classifier-report-titleblock">
+            <p class="eyebrow">Модель классификации</p>
+            <h2 id="classifier-title">Результаты обучения</h2>
+          </span>
+
+          <span class="classifier-report-action">
+            <span id="classifier-dataset-summary" class="classifier-dataset-summary">Загружаем датасет...</span>
+            <span class="classifier-report-toggle classifier-report-toggle-open">Показать результаты</span>
+            <span class="classifier-report-toggle classifier-report-toggle-close">Скрыть результаты</span>
+          </span>
+        </summary>
+        <div class="classifier-report-content" id="classifier-report-content" aria-labelledby="classifier-title">
+          <p id="classifier-validation" class="classifier-validation"></p>
+          <p id="classifier-status" class="classifier-status" role="status">Загружаем метрики...</p>
+          <div id="classifier-scoreboard" class="classifier-scoreboard" aria-live="polite"></div>
+          <p class="classifier-metric-note">«Понравился» — оценка 4 или 5. Простой прогноз считает понравившимися все фильмы; метрика редкого класса показывает, распознаёт ли сеть оценки ниже 4.</p>
+          <h3 class="classifier-preview-title">Ошибки и верные прогнозы нейросети</h3>
+          <dl id="classifier-confusion" class="classifier-confusion"></dl>
+          <h3 class="classifier-preview-title">Как сеть распознаёт оценки</h3>
+          <ol id="classifier-recognition-rows" class="classifier-preview-list"></ol>
+          <h3 class="classifier-preview-title">Примеры данных датасета</h3>
+          <ol id="classifier-preview-rows" class="classifier-preview-list"></ol>
+        </div>
+      </details>
+
+      <details class="rulebook" id="knowledge">
+        <summary>
+          <span>База продукционных правил</span>
+          <span class="rulebook-hint">Прямой вывод · R1–R3</span>
+        </summary>
+        <ol class="rule-list" id="rule-list" aria-label="Исполняемые правила">
+          <li class="rule-loading">Загружаем правила...</li>
+        </ol>
+      </details>
+
+      <details class="framebook" id="framebook">
+        <summary>
+          <span>База знаний: фреймовая модель</span>
+          <span class="framebook-hint">Классы и примеры объектов</span>
+        </summary>
+        <div class="frame-workspace">
+          <div class="frame-tabs" role="tablist" aria-label="Разделы фреймовой модели">
+            <button class="frame-tab is-active" id="frame-hierarchy-tab" type="button" role="tab" aria-selected="true" aria-controls="frame-tree-panel">Иерархия классов</button>
+            <button class="frame-tab" id="frame-instances-tab" type="button" role="tab" aria-selected="false" aria-controls="frame-examples-panel">Экземпляры фреймов</button>
+          </div>
+          <section class="frame-panel" id="frame-tree-panel" role="tabpanel" aria-labelledby="frame-hierarchy-tab">
+            <h2 id="frame-tree-title">Как устроены данные</h2>
+            <p class="frame-panel-copy">Выберите класс, чтобы раскрыть его свойства и связи. Дочерние классы наследуют данные родителя.</p>
+            <div id="frame-tree" class="frame-tree" aria-live="polite">
+              <p class="frame-loading">Загружаем фреймы...</p>
+            </div>
+          </section>
+          <section class="frame-panel" id="frame-examples-panel" role="tabpanel" aria-labelledby="frame-instances-tab" hidden>
+            <h2 id="frame-examples-title">Посмотреть объект</h2>
+            <p class="frame-panel-copy">Выберите фильм или зрителя, чтобы посмотреть заполненные данные фрейма.</p>
+            <div class="frame-search-controls">
+              <label class="frame-search-field">
+                <span>Поиск по объектам</span>
+                <input id="frame-search" type="search" placeholder="Название, имя, жанр или значение" autocomplete="off">
+              </label>
+              <label class="frame-search-field">
+                <span>Класс фрейма</span>
+                <select id="frame-class-filter">
+                  <option value="">Все классы</option>
+                  <option value="Фильм">Фильмы</option>
+                  <option value="Зритель">Зрители</option>
+                </select>
+              </label>
+              <p id="frame-search-status" class="frame-search-status" role="status">Загружаем объекты...</p>
+            </div>
+            <div class="frame-instance-controls">
+              <label class="frame-instance-field">
+                <span>Результаты поиска</span>
+                <select id="frame-instance-select" aria-label="Выбрать экземпляр фрейма" disabled></select>
+              </label>
+              <button class="frame-show-button" id="frame-show-button" type="button" disabled>Показать объект</button>
+            </div>
+            <div class="frame-related-search">
+              <label class="frame-related-field" for="frame-related-search">
+                <span>Поиск связанных объектов</span>
+                <input id="frame-related-search" type="search" placeholder="Жанр, актёр, режиссёр или фильм" autocomplete="off" disabled>
+              </label>
+              <p id="frame-related-search-status" class="frame-related-search-status" role="status">Сначала выберите объект.</p>
+              <ul id="frame-related-results" class="frame-related-results" aria-live="polite"></ul>
+            </div>
+            <div id="frame-examples" class="frame-examples" aria-live="polite"></div>
+            <div id="frame-property-editor"></div>
+          </section>
+        </div>
+      </details>
+      <p class="page-footnote"><span id="catalog-total">Каталог фильмов</span> · Четыре способа подбора · ИИ-помощник OpenAI</p>
+    </main>
+  </body>
+</html>
